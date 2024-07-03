@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python - OWASP TOP 10 API - 2023</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.svg" title="YRprey">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+        <a class="navbar-brand" href="#"><img src="img/logo-letter.svg" width="180"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container mt-5">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab">API1:2023</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab2" role="tab">API2:2023</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab3" role="tab">API3:2023</a>
+        </li>        
+        <li class="nav-item">
+            <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab">API4:2023</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab5-tab" data-toggle="tab" href="#tab5" role="tab">API5:2023</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab6-tab" data-toggle="tab" href="#tab6" role="tab">API7:2023</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab7-tab" data-toggle="tab" href="#tab7" role="tab">API8:2023</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab8-tab" data-toggle="tab" href="#tab8" role="tab">API9:2023</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+            <br><br>
+            <h3>API1:2023 Broken Object Level Authorization</h3><br>
+            <input type="text" id="searchName" class="form-control" placeholder="Enter name">
+            <button class="btn btn-primary mt-2" onclick="searchUser()">Search</button>
+            <div id="searchResult"></div>
+            <br><br>
+            Examples of your team name to search for:
+            <li>Jhon</li>
+            <li>Smith</li>
+            <li>Jack</li>
+            <br><br>
+            <p style="color: red;">Examples of names of people who are not on your team to search for:</p>
+            <li style="color: red;">Oliver</li>
+            <li style="color: red;">Harry</li>
+            <li style="color: red;">Oscar</li>
+            
+        </div>
+        <div class="tab-pane fade" id="tab2" role="tabpanel"><br><br>
+            <h3>API2:2023 Broken Authentication</h3><br><br>
+            <input type="text" id="loginUsername2" class="form-control" placeholder="Username">
+            <input type="password" id="loginPassword2" class="form-control mt-2" placeholder="Password">
+            <button class="btn btn-primary mt-2" onclick="loginUser2()">Login</button>
+            <div id="loginResult2"></div><br>
+            Take the token you got in the API3:2023 tab, when you intentionally misspelled the user's login and password.
+        </div>        
+        <div class="tab-pane fade" id="tab3" role="tabpanel">
+            <br><br>
+            <h3>API3:2023 Broken Object Property Level Authorization</h3><br>
+            <input type="text" id="loginUsername" class="form-control" placeholder="Username">
+            <input type="password" id="loginPassword" class="form-control mt-2" placeholder="Password">
+            <button class="btn btn-primary mt-2" onclick="loginUser()">Login</button>
+            <div id="loginResult"></div>
+            <br><br>
+            
+
+            Intentionally make a mistake when logging in.<br>
+You will earn a valid user token, because the API is in debug mode to validate errors.<br>
+Use the token to tab "API5:2023" and exploiting more Vulnerabilities.<br>
+But the programmer forgot to remove debug mode when uploading to the production environment.
+        </div>
+       
+        <div class="tab-pane fade" id="tab4" role="tabpanel"><br><br>
+            <h3>API4:2023 Unrestricted Resource Consumption</h3><br>
+            <button class="btn btn-primary" onclick="loadImages()">Load Images to Carrossel</button>
+            <div id="imageSlider" class="mt-2"></div>
+            <br><br>
+            Intercept the request to endpoint 04.php and change the number of images to 1,000,000 million.<br>
+The server will respond more slowly, harming the application's performance and resource consumption.
+        </div>
+        <div class="tab-pane fade" id="tab5" role="tabpanel">
+            <br><br><h3>API5:2023 Broken Function Level Authorization</h3><br>  
+            <input type="text" id="tokenInput" class="form-control" placeholder="Enter token">
+            <button class="btn btn-primary mt-2" onclick="validateToken()">Validate</button>
+            <div id="tokenResult"></div><br><br>
+            When making the request to validate the user token, change the role value to admin.<br>
+This way you will earn the privileged user token, administrator.
+            
+            
+        </div>
+        <div class="tab-pane fade" id="tab6" role="tabpanel">
+            <br><br><h3>API7:2023 Server Side Request Forgery</h3><br>
+            <input type="text" id="imageUrl" class="form-control" placeholder="Enter image URL">
+            <button class="btn btn-primary mt-2" onclick="validateEndpoint()">Validate endpoint</button>
+            <div id="imageResult"></div><br><br>
+            Check if the enpoint is active by typing the localhost address.<br> <p>If you want to explore the SSRF type for example: <b style="color: red;">http://localhost:80</b></p>
+        </div>
+        <div class="tab-pane fade" id="tab7" role="tabpanel">
+            <br><br><h3>API8:2023 Security Misconfiguration</h3><br>
+            <button class="btn btn-primary" onclick="checkSecurityHeaders()">Check Headers</button>
+            <br><br>
+            Click check header to find out some headers that represent a security problem in an API.<br><br>            
+            <div id="headersResult"></div>        
+        </div>
+        <div class="tab-pane fade" id="tab8" role="tabpanel">
+            <br><br><h3>API9:2023 Improper Inventory Management</h3><br>
+            <input type="text" id="userName" class="form-control" placeholder="Enter name">
+            <button class="btn btn-primary mt-2" onclick="getUserData()">Get Data</button>
+            <div id="userDataResult"></div><br>
+            API v1 always has a username, even if the username is wrong, but API v2 is correct.<br>
+IN real scenario, API v1 should have been removed or never published due to security flaw.
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function searchUser() {
+    var id = "1";
+    var name = $('#searchName').val();
+    $.ajax({
+        url: 'http://localhost:5000/01',
+        type: 'POST',
+        contentType: 'application/json', // Define o tipo de conteúdo como JSON
+        data: JSON.stringify({ id: id, name: name }), // Converte os dados para JSON
+        success: function(response) {
+            if (response.status === 'success') {
+                var users = response.users;
+                var html = '';
+
+                users.forEach(function(user) {
+                    html += '<div><br><br>';
+                    html += 'Name: ' + user.name + '<br>';
+                    html += 'Owner: ' + user.owner + '<br>';
+                    html += 'Exploited: ' + user.type + '<br>';
+                    html += '</div>';
+                });
+
+                $('#searchResult').html(html);
+            } else {
+                $('#searchResult').html('<p>No users found.</p>');
+            }
+        }
+    });
+}
+
+
+
+    function loginUser() {
+        var username = $('#loginUsername').val();
+        var password = $('#loginPassword').val();
+        $.ajax({
+            url: 'http://localhost:5000/03',
+            type: 'POST',
+            contentType: 'application/json', // Define o tipo de conteúdo como JSON
+            data: JSON.stringify({ username: username, password: password }),
+            success: function(response) {
+                if (response.msg === 'Name not found') {
+                    $('#loginResult').html('<br><br><div class="alert alert-danger" role="alert">404 - Not Found <br> Debug token result '+response.token+'</div>');
+                }
+                else {
+                    $('#loginResult').html('<br><br><div class="alert alert-success" role="alert">Authentication successful! <br> Welcome :'+username+'</div>');
+                }
+            }
+        });
+    }
+
+    function loginUser2() {
+        var username = $('#loginUsername2').val();
+        var password = $('#loginPassword2').val();
+        var token = "1234567890";
+        $.ajax({
+            url: 'http://localhost:5000/02',
+            type: 'POST',
+            contentType: 'application/json', // Define o tipo de conteúdo como JSON
+            data: JSON.stringify({ username: username, password: password, token: token }),
+            success: function(response) {
+                if (response.status === 'error') {
+                    $('#loginResult2').html('<br><br><div class="alert alert-danger" role="alert">404 - Username Not Found</div>');
+                }
+                else {
+                    $('#loginResult2').html('<br><br><div class="alert alert-success" role="alert">Authentication successful! <br> Welcome :'+username+'</div>');
+                }
+            }
+        });
+    }
+
+    function loadImages() {
+        var img = 5;
+    $.ajax({
+        url: 'http://localhost:5000/04',
+        type: 'GET',
+        contentType: 'application/json', // Define o tipo de conteúdo como JSON
+        data: { img: img},
+        success: function(response) {
+            if (response.length > 0) {
+                var html = '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"><div class="carousel-inner">';
+                response.forEach((img, index) => {
+                    html += `<div class="carousel-item ${index === 0 ? 'active' : ''}">
+                                <img src="${img}" class="d-block w-100" alt="Image ${index + 1}">
+                             </div>`;
+                });
+                html += '</div><a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>';
+                
+                $('#imageSlider').html(html);
+                $('.carousel').carousel(); // Ativação do carrossel Bootstrap
+            } else {
+                console.warn("Nenhuma imagem encontrada.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Erro na requisição AJAX:', error);
+        }
+    });
+}
+
+    function validateToken() {
+        var token = $('#tokenInput').val();
+        var role = "admin";
+        $.ajax({
+    url: 'http://localhost:5000/05',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({ token: 'seu_token', role: role }),
+    success: function(response) {
+        var message = response.message;
+        var status = response.status;
+        $('#tokenResult').html("Your token is validated :"+response.token);
+    },
+    error: function(xhr, status, error) {
+        $('#tokenResult').html("Inavdalid token");
+    }
+});
+    }
+
+    function validateEndpoint() {
+        var imageUrl = $('#imageUrl').val();
+        $.ajax({
+        url: 'http://localhost:5000/06',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ validate: imageUrl }),
+        success: function(response) {
+            if (response) {
+                $('#imageResult').html('<br><br><div class="alert alert-success" role="alert">Endpoint Online</div>');
+            }
+            else {
+                $('#imageResult').html('<br><br><div class="alert alert-success" role="alert">'+response+'</div>');
+                
+            }
+        }
+        });
+    }
+
+    function checkSecurityHeaders() {
+    var targetUrl = "http://localhost:80"; // Assume que você tem um input com id 'targetUrl' para pegar a URL
+    $.ajax({
+        url: 'http://localhost:5000/07', // URL da sua rota Flask
+        type: 'POST', // Usando POST para enviar dados JSON
+        contentType: 'application/json',
+        data: JSON.stringify({ url: targetUrl }), // Passa a URL como um objeto JSON
+        success: function(response) {
+            // Itera sobre cada chave no objeto de resposta
+            var headersHtml = '<ul>';
+            for (var header in response) {
+                if (response.hasOwnProperty(header)) {
+                    var name = header.trim(); // Nome do cabeçalho
+                    var value = response[header].trim(); // Valor do cabeçalho
+
+                    // Adiciona cabeçalhos ao HTML
+                    if (header.includes('Server') || header.includes('Powered') || header.includes('Cookie') || (header.includes('Content-Type') && value.includes('text/html'))) {
+                        headersHtml += '<li style="color: red">' + name + ': ' + value + '</li>';
+                    } else {
+                        headersHtml += '<li style="color: green">' + name + ': ' + value + '</li>';
+                    }
+                }
+            }
+            headersHtml += '</ul>';
+            $('#headersResult').html(headersHtml); // Exibe os cabeçalhos na página HTML
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Erro na requisição:', errorThrown);
+        }
+    });
+}
+
+
+
+function getUserData() {
+    var name = $('#userName').val();
+    $.ajax({
+        url: 'http://localhost:5000/v1/08',
+        type: 'POST', // Alterado para POST se você está enviando dados via JSON.stringify()
+        contentType: 'application/json',
+        data: JSON.stringify({ name: name }),
+        success: function(response) {
+            // Processar a resposta do servidor
+            if (response.message === "Name not found") {
+                $('#userDataResult').html('<br><br><div class="alert alert-danger" role="alert">404 - Username Not Found</div>');
+            }
+            if (Array.isArray(response) && response.length > 0) {
+                var userData = response[0]; // Acessa o primeiro elemento do array
+                var userInfo = `
+                    <p>Nome de Usuário: ${userData.username}</p>
+                    <p>Senha: ${userData.password}</p>
+                    <p>Papel: ${userData.role}</p>
+                    <p>Token: ${userData.token}</p>
+                `;
+                $('#userDataResult').html(userInfo);
+            } else {
+                console.error('Resposta do servidor não contém um objeto válido ou está vazia.', response);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Erro na requisição AJAX:', errorThrown);
+        }
+    });
+}
+</script>
+</body>
+</html>
